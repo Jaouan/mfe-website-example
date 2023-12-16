@@ -8,7 +8,9 @@
     "lint": {
       "dependsOn": ["^lint"]
     },
-    "remote-mfe-1#build": {},
+    "remote-mfe-1#build": {
+      "outputs": ["dist/**"]
+    },
     "remote-mfe-1#dev": {},
     "shell#build:prod": {
       "dependsOn": ["remote-mfe-1#build"]
