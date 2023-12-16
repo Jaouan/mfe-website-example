@@ -2,9 +2,12 @@
 
 import { __federation_method_setRemote, __federation_method_getRemote } from '__federation__';
 
+const hackViteImportWhenUsingPublicFolder = (url) =>
+    import.meta.env.PROD ? url : `${document.location.origin}${url}`;
+
 export const addRemote = (scope, url, opts = {}) =>
     __federation_method_setRemote(scope, {
-        url: () => Promise.resolve(url),
+        url: () => Promise.resolve(hackViteImportWhenUsingPublicFolder(url)),
         format: 'esm',
         from: 'vite',
         ...opts
