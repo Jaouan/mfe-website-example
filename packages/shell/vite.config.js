@@ -6,7 +6,7 @@ export default defineConfig({
   plugins: [
     federation({
       name: 'app',
-      remotes: {},
+      remotes: { dummy: "" },
     })
   ],
   build: {
