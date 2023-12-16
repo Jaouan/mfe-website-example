@@ -5,7 +5,7 @@ import { __federation_method_setRemote, __federation_method_getRemote } from '__
 const hackViteImportWhenUsingPublicFolder = (url) =>
     import.meta.env.PROD ? url : `${document.location.origin}${url}`;
 
-export const addRemote = (scope, url, opts = {}) =>
+const addRemote = (scope, url, opts = {}) =>
     __federation_method_setRemote(scope, {
         url: () => Promise.resolve(hackViteImportWhenUsingPublicFolder(url)),
         format: 'esm',
@@ -13,7 +13,7 @@ export const addRemote = (scope, url, opts = {}) =>
         ...opts
     });
 
-export const getRemote = (scope, module = "./App") =>
+const getRemote = (scope, module = "./App") =>
     __federation_method_getRemote(scope, module);
 
 

@@ -12,11 +12,11 @@ const detectRouteRenderType = (route) =>
 
 (async () => {
     const mfeManifest = await (await fetch("/mfe-manifest.json")).json();
+
+    (await importRemote("layout", mfeManifest.layout)).mount(document.getElementById("layout"));
+
     initRouter(mfeManifest.routes.map(route => ({
         ...route,
         mount: (container) => routeRenderingStrategies[detectRouteRenderType(route)](route, container)
     })));
 })();
-
-
-

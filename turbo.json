@@ -2,21 +2,18 @@
   "$schema": "https://turbo.build/schema.json",
   "globalDependencies": ["**/.env.*local"],
   "pipeline": {
-    "build": {
-      "dependsOn": ["^build"]
-    },
-    "lint": {
-      "dependsOn": ["^lint"]
-    },
-    "remote-mfe-1#build": {
-      "outputs": ["dist/**"]
-    },
+    "build": { "dependsOn": ["^build"] },
+    "lint": { "dependsOn": ["^lint"] },
+
+    "remote-mfe-1#build": { "outputs": ["dist/**"] },
     "remote-mfe-1#dev": {},
-    "shell#build:prod": {
-      "dependsOn": ["remote-mfe-1#build"]
-    },
+
+    "layout#build": { "outputs": ["dist/**"] },
+    "layout#dev": {},
+
+    "shell#build:prod": { "dependsOn": ["remote-mfe-1#build", "layout#build"] },
     "shell#dev": {
-      "dependsOn": ["remote-mfe-1#build"],
+      "dependsOn": ["remote-mfe-1#build", "layout#build"],
       "cache": false,
       "persistent": true
     }

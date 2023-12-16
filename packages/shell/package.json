@@ -6,7 +6,7 @@
   "scripts": {
     "dev": "vite --port 8080 --strictPort",
     "build": "vite build",
-    "build:prod": "(unlink ./public/mfe-1-v1 || rm -f ./public/mfe-1-v1) && cp -R ../remote-mfe-1/dist ./public/mfe-1-v1 && vite build",
+    "build:prod": "sh eager-symlink.sh && vite build",
     "preview": "vite preview --port 8080 --strictPort",
     "serve": "vite preview --port 8080 --strictPort"
   },

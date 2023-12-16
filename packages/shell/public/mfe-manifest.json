@@ -1,15 +1,11 @@
 {
-  "layout": "/mfe-1-v1/assets/remoteEntry.js",
+  "layout": "/layout-v1/assets/remoteEntry.js",
   "routes": [
     {
       "html": "coucou"
     },
     {
       "path": "/mfe-1",
-      "remoteEntry": "/mfe-1-v1/assets/remoteEntry.js"
-    },
-    {
-      "path": "/layout",
       "remoteEntry": "/mfe-1-v1/assets/remoteEntry.js"
     }
   ]
