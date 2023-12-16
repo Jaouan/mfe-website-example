@@ -1,0 +1,5 @@
+{
+  "buildCommand": "yarn build:prod",
+  "outputDirectory": "packages/shell/dist",
+  "routes": [{ "src": "/[^.]+", "dest": "/", "status": 200 }]
+}
