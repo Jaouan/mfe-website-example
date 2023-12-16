@@ -1,25 +1,21 @@
-import { importRemote } from "./module-loader";
 import { initRouter } from "./router";
+import { importRemote } from "./module-loader";
 
-const routeTypeStrategies = {
+const routeRenderingStrategies = {
     remoteEntry: async (route, container) => (await importRemote(route.path, route.remoteEntry)).mount(container),
     html: (route, container) => container.innerHTML = route.html,
-    unknown: () => container.innerHTML = `Unhandled route type.`
+    unknown: () => container.innerHTML = `Unknown route type.`
 };
 
-const getRouteType = (route) =>
-    Object.keys(routeTypeStrategies).find(routeType => route[routeType]) || "unknown";
+const detectRouteRenderType = (route) =>
+    Object.keys(routeRenderingStrategies).find(routeType => route[routeType]) || "unknown";
 
 (async () => {
     const mfeManifest = await (await fetch("/mfe-manifest.json")).json();
-
-    // For this example, we take the first module in the manifest.
     initRouter(mfeManifest.routes.map(route => ({
         ...route,
-        mount: (container) => routeTypeStrategies[getRouteType(route)](route, container)
+        mount: (container) => routeRenderingStrategies[detectRouteRenderType(route)](route, container)
     })));
-
-    dispatchEvent(new CustomEvent("shell-refresh-route-interception"));
 })();
 
 

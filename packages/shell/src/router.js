@@ -1,5 +1,5 @@
-const overrideRelativeHref = (routerElement, routes, routeElement) => {
-    routeElement?.querySelectorAll(`a[x-shell-route]`)?.forEach((a) => {
+const overrideRelativeHref = (routerElement, routes, domElement) => {
+    domElement?.querySelectorAll(`a[x-shell-route]`)?.forEach((a) => {
         a.removeAttribute("x-shell-route");
         const overrideLinkEvent = (event) => {
             event.preventDefault();
@@ -42,9 +42,13 @@ const navigate = async (routerElement, routes, toPath, ignoreHistory) => {
     await bootstrapModule(routerElement, newRoute);
 }
 
+export const handleShellRouteLink = () =>
+    dispatchEvent(new CustomEvent("shell-handleShellRouteLink"));
+
 export const initRouter = (routes) => {
     const routerElement = document.querySelector(`div[x-router]`);
-    window.addEventListener("shell-refresh-route-interception", () => overrideRelativeHref(routerElement, routes, document.body));
+    window.addEventListener("shell-handleShellRouteLink", () => overrideRelativeHref(routerElement, routes, document.body));
+    handleShellRouteLink();
     window.onpopstate = () => navigate(routerElement, routes, `${window.location.pathname}${window.location.search}`);
     window.onpopstate();
 }
