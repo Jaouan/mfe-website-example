@@ -1,0 +1,12 @@
+{
+  "routes": [
+    {
+      "path": "",
+      "html": "coucou"
+    },
+    {
+      "path": "/mfe-1",
+      "remoteEntry": "http://localhost:8080/mfe-1-v1/assets/remoteEntry.js"
+    }
+  ]
+}

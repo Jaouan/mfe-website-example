@@ -1,0 +1,19 @@
+{
+  "$schema": "https://turbo.build/schema.json",
+  "globalDependencies": ["**/.env.*local"],
+  "pipeline": {
+    "build": {
+      "dependsOn": ["^build"]
+    },
+    "lint": {
+      "dependsOn": ["^lint"]
+    },
+    "remote-mfe-1#build": {},
+    "remote-mfe-1#dev": {},
+    "shell#dev": {
+      "dependsOn": ["remote-mfe-1#build"],
+      "cache": false,
+      "persistent": true
+    }
+  }
+}
