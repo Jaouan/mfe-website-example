@@ -1,5 +1,6 @@
 import { initRouter } from "./router";
 import { importRemote } from "./module-loader";
+import './mount-module.component';
 
 const routeRenderingStrategies = {
     remoteEntry: async (route, container) => (await importRemote(route.path, route.remoteEntry)).mount(container),

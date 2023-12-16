@@ -7,6 +7,10 @@
     {
       "path": "/mfe-1",
       "remoteEntry": "/mfe-1-v1/assets/remoteEntry.js"
+    },
+    {
+      "path": "/fragmented",
+      "html": "<div class=\"fragment-container\"><mount-module class=\"fragment-1\" x-id=\"/mfe-1\"></mount-module><mount-module class=\"fragment-2\" x-id=\"/mfe-1\"></mount-module></div>"
     }
   ]
 }
