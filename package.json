@@ -3,6 +3,7 @@
   "private": true,
   "scripts": {
     "build": "turbo build",
+    "build:prod": "turbo \"shell#build:prod\"",
     "dev": "turbo \"shell#dev\"",
     "dev:mfe": "turbo \"remote-mfe-1#dev\"",
     "lint": "turbo lint",

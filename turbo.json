@@ -10,6 +10,9 @@
     },
     "remote-mfe-1#build": {},
     "remote-mfe-1#dev": {},
+    "shell#build:prod": {
+      "dependsOn": ["remote-mfe-1#build"]
+    },
     "shell#dev": {
       "dependsOn": ["remote-mfe-1#build"],
       "cache": false,
