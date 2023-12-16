@@ -1,6 +1,5 @@
 import { importRemote } from "./module-loader";
-import router from "./router";
-
+import { initRouter } from "./router";
 
 const mountTypeStrategies = {
     remoteEntry: async (route, container) => (await importRemote(route.path, route.remoteEntry)).mount(container),
@@ -11,7 +10,7 @@ const mountTypeStrategies = {
     const mfeManifest = await (await fetch("/mfe-manifest.json")).json();
 
     // For this example, we take the first module in the manifest.
-    router.initRouter(mfeManifest.routes.map(route => ({
+    initRouter(mfeManifest.routes.map(route => ({
         ...route,
         mount: async (container) => {
             // TODO rework

@@ -1,7 +1,6 @@
 {
   "routes": [
     {
-      "path": "",
       "html": "coucou"
     },
     {
