@@ -21,7 +21,7 @@ const detectRouteRenderType = (route) =>
     const manifest = await (await fetch("/manifest.json")).json();
     window.manifest = manifest; // TODO Store ?
 
-    mountRemote(manifest, "layout", document.getElementById("layout"));
+    await mountRemote(manifest, "layout", document.getElementById("layout"));
 
     initRouter(manifest.routes.map(route => ({
         ...route,
