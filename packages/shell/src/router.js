@@ -12,7 +12,7 @@ const overrideRelativeHref = (routerElement, routes, domElement) => {
 
 const animateClearRouterElement = async (routerElement) => {
     routerElement.className = "route-out";
-    await new Promise((resolve) => setTimeout(resolve, /*300*/ 0));
+    await new Promise((resolve) => setTimeout(resolve, 150)); // TODO: extract time.
     routerElement.innerHTML = "";
     routerElement.className = "";
 };

@@ -1,7 +1,7 @@
 {
   "routes": [
     {
-      "html": "coucou"
+      "html": "<span>coucou</span>"
     },
     {
       "path": "/mfe-1",
