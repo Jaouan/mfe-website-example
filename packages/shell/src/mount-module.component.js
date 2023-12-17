@@ -1,10 +1,6 @@
 import { importRemote } from "./module-loader";
 
 class MountModule extends HTMLElement {
-    constructor() {
-        super();
-    }
-
     async connectedCallback() {
         // TODO: Store ?
         const manifest = window.manifest;
