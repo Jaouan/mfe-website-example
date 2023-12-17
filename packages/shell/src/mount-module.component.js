@@ -1,12 +1,12 @@
-import { importRemote, mountRemote } from "./module-loader";
+import { importRemote, mountRemote } from './module-loader';
+import { getState } from '../../global-store/global-store';
+
 
 class MountModule extends HTMLElement {
-    connectedCallback() {
-        // TODO: Store ?
-        const manifest = window.manifest;
-        const moduleId = this.getAttribute('x-id');
-        mountRemote(manifest, moduleId, this);
-    }
+  connectedCallback() {
+    const moduleId = this.getAttribute('x-id');
+    mountRemote(getState().manifest, moduleId, this);
+  }
 }
 
 customElements.define('mount-module', MountModule);

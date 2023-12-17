@@ -1,6 +1,7 @@
 import { initRouter } from "./router";
 import { mountRemote } from "./module-loader";
 import './mount-module.component';
+import { getState } from '../../global-store/global-store';
 
 const routeRenderingStrategies = {
     unknown: ({ container }) => container.innerHTML = `Unknown route type.`,
@@ -19,7 +20,7 @@ const detectRouteRenderType = (route) =>
 
 (async () => {
     const manifest = await (await fetch("/manifest.json")).json();
-    window.manifest = manifest; // TODO Store ?
+    getState().updateManifest(manifest)
 
     await mountRemote(manifest, "layout", document.getElementById("layout"));
 

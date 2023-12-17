@@ -1,5 +1,7 @@
 .composition--side-by-side {
   display: flex;
+  flex-wrap: wrap;
+  justify-content: space-around;
 }
 .fragment-0 {
   background: red;
