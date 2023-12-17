@@ -1,11 +1,17 @@
-.fragment-container {
+.fragments-container--side-by-side {
   display: flex;
 }
-.fragment-primary {
+.fragment-0 {
   background: red;
 }
-.fragment-secondary {
+.fragment-1 {
   background: green;
+}
+.fragment-2 {
+  background: cyan;
+}
+.fragment-3 {
+  background: orange;
 }
 
 .route-out {

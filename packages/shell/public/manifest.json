@@ -8,8 +8,18 @@
       "module": "mfe-1"
     },
     {
-      "path": "/fragmented",
-      "html": "<div class=\"fragment-container\"><mount-module class=\"fragment-primary\" x-id=\"mfe-1\"></mount-module><mount-module class=\"fragment-secondary\" x-id=\"mfe-1\"></mount-module></div>"
+      "path": "/fragmented-2",
+      "composition": {
+        "layout": "side-by-side",
+        "modules": ["mfe-1", "mfe-1"]
+      }
+    },
+    {
+      "path": "/fragmented-4",
+      "composition": {
+        "layout": "side-by-side",
+        "modules": ["mfe-1", "mfe-1", "mfe-1", "mfe-1"]
+      }
     }
   ],
   "modules": {

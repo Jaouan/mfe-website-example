@@ -3,9 +3,15 @@ import { importRemote } from "./module-loader";
 import './mount-module.component';
 
 const routeRenderingStrategies = {
+    unknown: ({ container }) => container.innerHTML = `Unknown route type.`,
     module: async ({ route, container, remoteEntry }) => (await importRemote(route.path, remoteEntry)).mount(container),
     html: ({ route, container }) => container.innerHTML = route.html,
-    unknown: ({ container }) => container.innerHTML = `Unknown route type.`
+    composition: async ({ route: { composition }, container }) =>
+        container.innerHTML = (
+            `<div class="fragments-container fragments-container--${composition.layout}">
+                ${composition.modules.map((module, moduleIndex) => `<mount-module class="fragment-${moduleIndex}" x-id="${module}"></mount-module>`).join("")}
+            </mount-module></div>`
+        )
 };
 
 const detectRouteRenderType = (route) =>
