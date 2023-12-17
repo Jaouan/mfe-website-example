@@ -36,16 +36,17 @@ const navigate = async (routerElement, routes, toPath, ignoreHistory) => {
     await clearRouterElement(routerElement);
     window.dispatchEvent(new CustomEvent("shell-route-changed", { "detail": newRoute }));
     await newRoute.render(routerElement);;
-}
+};
 
 export const handleShellRouteLink = () =>
     dispatchEvent(new CustomEvent("shell-handleShellRouteLink"));
 
 export const initRouter = (routes) => {
     const routerElement = document.querySelector(`div[x-router]`);
+    window.addEventListener("shell-navigate", (event) => navigate(routerElement, routes, event.detail.to));
     window.addEventListener("shell-handleShellRouteLink", () => overrideRelativeHref(routerElement, routes, document.body));
     handleShellRouteLink();
     window.onpopstate = () =>
         navigate(routerElement, routes, `${window.location.pathname}${window.location.search}`, true);
     window.onpopstate();
-}
+};

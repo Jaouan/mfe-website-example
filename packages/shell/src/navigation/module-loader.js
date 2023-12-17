@@ -25,7 +25,6 @@ const getRemote = async (scope, module = "./App") => {
     }
 }
 
-
 export const importRemote = (scope, url, module = "./App") => {
     addRemote(scope, url);
     return getRemote(scope, module);

@@ -1,4 +1,4 @@
-import { importRemote, mountRemote } from "./module-loader";
+import { mountRemote } from "../navigation/module-loader";
 
 class MountModule extends HTMLElement {
     connectedCallback() {
