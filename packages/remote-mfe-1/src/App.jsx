@@ -1,15 +1,22 @@
 import { useState } from "react";
 import { useStore } from "zustand";
-import { globalStore } from "../../global-store/global-store";
+import { persistedGlobalStore, memoryGlobalStore } from "global-store";
 import reactLogo from "./assets/react.svg";
 import viteLogo from "./assets/vite.svg";
 import "./App.css";
 
-const useGlobalStore = (selector) => useStore(globalStore, selector);
+const useMemoryGlobalStore = (selector) =>
+  useStore(memoryGlobalStore, selector);
+const usePersistedGlobalStore = (selector) =>
+  useStore(persistedGlobalStore, selector);
 
 function App() {
-  const bears = useGlobalStore((state) => state.bears);
-  const increasePopulation = useGlobalStore(
+  const bears = useMemoryGlobalStore((state) => state.bears);
+  const increasePopulation = useMemoryGlobalStore(
+    (state) => state.increasePopulation
+  );
+  const bearsPersisted = usePersistedGlobalStore((state) => state.bears);
+  const persistedIncreasePopulation = usePersistedGlobalStore(
     (state) => state.increasePopulation
   );
   const [count, setCount] = useState(0);
@@ -30,7 +37,10 @@ function App() {
           count is {count}
         </button>
         <button onClick={() => increasePopulation()}>
-          global store count is {bears}
+          memory global store count is {bears}
+        </button>
+        <button onClick={() => persistedIncreasePopulation()}>
+          persisted global store count is {bearsPersisted}
         </button>
         <p>
           Edit <code>src/App.jsx</code> and save to test HMR

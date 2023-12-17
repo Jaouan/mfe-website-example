@@ -5,18 +5,18 @@
     "build": { "dependsOn": ["^build"] },
     "lint": { "dependsOn": ["^lint"] },
 
+    "global-store#build": { "outputs": ["dist/**"] },
+    "global-store#dev": {},
+
     "remote-mfe-1#build": { "outputs": ["dist/**"] },
-    "remote-mfe-1#dev": {},
+    "remote-mfe-1#dev": { "dependsOn": ["global-store#build"] },
 
     "layout#build": { "outputs": ["dist/**"] },
     "layout#dev": {},
 
-    "global-store#build": { "outputs": ["dist/**"] },
-    "global-store#dev": {},
-
-    "shell#build:prod": { "dependsOn": ["remote-mfe-1#build", "layout#build"] },
+    "shell#build:prod": { "dependsOn": ["remote-mfe-1#build", "layout#build", "global-store#build"] },
     "shell#dev": {
-      "dependsOn": ["remote-mfe-1#build", "layout#build"],
+      "dependsOn": ["remote-mfe-1#build", "layout#build", "global-store#build"],
       "cache": false,
       "persistent": true
     }

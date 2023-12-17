@@ -1,6 +1,6 @@
-import { getState } from "./global-store";
+import { getMemoryState } from "./global-store";
 
-getState().increasePopulation();
-const bears = getState().bears;
+getMemoryState().increasePopulation();
+const bears = getMemoryState().bears;
 
 document.querySelector('#app').innerHTML = `Bears : ${bears}`;
