@@ -21,3 +21,7 @@ export const importRemote = (scope, url, module = "./App") => {
     addRemote(scope, url);
     return getRemote(scope, module);
 };
+
+export const mountRemote = async (manifest, moduleId, container) =>
+    (await importRemote(moduleId, manifest.modules[moduleId])).mount(container);
+

@@ -1,11 +1,11 @@
-import { importRemote } from "./module-loader";
+import { importRemote, mountRemote } from "./module-loader";
 
 class MountModule extends HTMLElement {
-    async connectedCallback() {
+    connectedCallback() {
         // TODO: Store ?
         const manifest = window.manifest;
         const moduleId = this.getAttribute('x-id');
-        (await importRemote(moduleId, manifest.modules[moduleId])).mount(this);
+        mountRemote(manifest, moduleId, manifest.modules[moduleId], this);
     }
 }
 
