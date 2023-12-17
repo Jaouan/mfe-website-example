@@ -35,7 +35,7 @@ const navigate = async (routerElement, routes, toPath, ignoreHistory) => {
     !ignoreHistory && saveLocationInHistory(toPath);
     await clearRouterElement(routerElement);
     window.dispatchEvent(new CustomEvent("shell-route-changed", { "detail": newRoute }));
-    await newRoute.mount(routerElement);;
+    await newRoute.render(routerElement);;
 }
 
 export const handleShellRouteLink = () =>

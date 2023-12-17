@@ -25,7 +25,7 @@ const detectRouteRenderType = (route) =>
 
     initRouter(manifest.routes.map(route => ({
         ...route,
-        mount: (container) =>
+        render: (container) =>
             routeRenderingStrategies[detectRouteRenderType(route)]({ route, container, manifest })
     })));
 })();
