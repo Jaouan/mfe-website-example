@@ -1,6 +1,9 @@
 {
-  "name": "pululu-portal",
+  "name": "mfe-website-example",
   "private": true,
+  "repository": "https://github.com/Jaouan/mfe-website-example",
+  "author": "Jaouan",
+  "license": "MIT",
   "scripts": {
     "build": "turbo build",
     "build:prod": "turbo \"shell#build:prod\"",
