@@ -1,9 +1,9 @@
 .fragment-container {
   display: flex;
 }
-.fragment-1 {
+.fragment-primary {
   background: red;
 }
-.fragment-2 {
+.fragment-secondary {
   background: green;
 }

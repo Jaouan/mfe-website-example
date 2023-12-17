@@ -1,0 +1,19 @@
+{
+  "routes": [
+    {
+      "html": "coucou"
+    },
+    {
+      "path": "/mfe-1",
+      "module": "mfe-1"
+    },
+    {
+      "path": "/fragmented",
+      "html": "<div class=\"fragment-container\"><mount-module class=\"fragment-primary\" x-id=\"mfe-1\"></mount-module><mount-module class=\"fragment-secondary\" x-id=\"mfe-1\"></mount-module></div>"
+    }
+  ],
+  "modules": {
+    "layout": "/layout-0.0.0/assets/remoteEntry.js",
+    "mfe-1": "/remote-mfe-1-0.0.0/assets/remoteEntry.js"
+  }
+}

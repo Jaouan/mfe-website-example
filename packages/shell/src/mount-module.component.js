@@ -7,9 +7,9 @@ class MountModule extends HTMLElement {
 
     async connectedCallback() {
         // TODO: Store ?
-        const mfeManifest = await (await fetch("/mfe-manifest.json")).json();
+        const manifest = await (await fetch("/manifest.json")).json();
         const moduleId = this.getAttribute('x-id');
-        (await importRemote(moduleId, mfeManifest.routes.find(route => route.path === moduleId).remoteEntry)).mount(this);
+        (await importRemote(moduleId, manifest.modules[moduleId])).mount(this);
     }
 }
 

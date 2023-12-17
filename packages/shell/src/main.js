@@ -3,21 +3,28 @@ import { importRemote } from "./module-loader";
 import './mount-module.component';
 
 const routeRenderingStrategies = {
-    remoteEntry: async (route, container) => (await importRemote(route.path, route.remoteEntry)).mount(container),
-    html: (route, container) => container.innerHTML = route.html,
-    unknown: () => container.innerHTML = `Unknown route type.`
+    module: async ({ route, container, remoteEntry }) => (await importRemote(route.path, remoteEntry)).mount(container),
+    html: ({ route, container }) => container.innerHTML = route.html,
+    unknown: ({ container }) => container.innerHTML = `Unknown route type.`
 };
 
 const detectRouteRenderType = (route) =>
     Object.keys(routeRenderingStrategies).find(routeType => route[routeType]) || "unknown";
 
 (async () => {
-    const mfeManifest = await (await fetch("/mfe-manifest.json")).json();
+    const manifest = await (await fetch("/manifest.json")).json();
 
-    (await importRemote("layout", mfeManifest.layout)).mount(document.getElementById("layout"));
+    (await importRemote("layout", manifest.modules.layout)).mount(document.getElementById("layout"));
 
-    initRouter(mfeManifest.routes.map(route => ({
+    initRouter(manifest.routes.map(route => ({
         ...route,
-        mount: (container) => routeRenderingStrategies[detectRouteRenderType(route)](route, container)
+        mount: (container) =>
+            routeRenderingStrategies[detectRouteRenderType(route)](
+                {
+                    route,
+                    container,
+                    remoteEntry: manifest.modules[route.module]
+                }
+            )
     })));
 })();
