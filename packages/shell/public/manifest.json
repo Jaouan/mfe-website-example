@@ -8,18 +8,18 @@
       "module": "mfe-1"
     },
     {
-      "path": "/fragmented-2",
-      "composition": {
-        "layout": "side-by-side",
-        "modules": ["mfe-1", "mfe-1"]
-      }
+      "path": "/composition-default",
+      "modules": ["mfe-1", "mfe-1"]
     },
     {
-      "path": "/fragmented-4",
-      "composition": {
-        "layout": "side-by-side",
-        "modules": ["mfe-1", "mfe-1", "mfe-1", "mfe-1"]
-      }
+      "path": "/composition-side",
+      "composition": "side-by-side",
+      "modules": ["mfe-1", "mfe-1"]
+    },
+    {
+      "path": "/composition-4",
+      "composition": "side-by-side",
+      "modules": ["mfe-1", "mfe-1", "mfe-1", "mfe-1"]
     }
   ],
   "modules": {

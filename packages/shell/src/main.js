@@ -2,16 +2,18 @@ import { initRouter } from "./router";
 import { importRemote } from "./module-loader";
 import './mount-module.component';
 
+const mountModules = ({ route: { composition, modules }, container }) =>
+    container.innerHTML = (
+        `<div class="composition composition--${composition}">
+        ${modules.map((module, moduleIndex) => `<mount-module class="fragment-${moduleIndex}" x-id="${module}"></mount-module>`).join("")}
+    </div>`
+    );
+
 const routeRenderingStrategies = {
     unknown: ({ container }) => container.innerHTML = `Unknown route type.`,
-    module: async ({ route: { module }, container, manifest }) => (await importRemote(module, manifest.modules[module])).mount(container),
     html: ({ route, container }) => container.innerHTML = route.html,
-    composition: async ({ route: { composition }, container }) =>
-        container.innerHTML = (
-            `<div class="fragments-container fragments-container--${composition.layout}">
-                ${composition.modules.map((module, moduleIndex) => `<mount-module class="fragment-${moduleIndex}" x-id="${module}"></mount-module>`).join("")}
-            </div>`
-        )
+    module: ({ route, container }) => mountModules({ route: { ...route, modules: [route.module] }, container }),
+    modules: mountModules
 };
 
 const detectRouteRenderType = (route) =>
