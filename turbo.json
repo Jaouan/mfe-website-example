@@ -11,6 +11,9 @@
     "layout#build": { "outputs": ["dist/**"] },
     "layout#dev": {},
 
+    "global-store#build": { "outputs": ["dist/**"] },
+    "global-store#dev": {},
+
     "shell#build:prod": { "dependsOn": ["remote-mfe-1#build", "layout#build"] },
     "shell#dev": {
       "dependsOn": ["remote-mfe-1#build", "layout#build"],

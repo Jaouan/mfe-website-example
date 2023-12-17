@@ -7,6 +7,7 @@
     "dev": "turbo \"shell#dev\"",
     "dev:mfe": "turbo \"remote-mfe-1#dev\"",
     "dev:layout": "turbo \"layout#dev\"",
+    "dev:store": "turbo \"global-store#dev\"",
     "lint": "turbo lint",
     "format": "prettier --write \"**/*.{ts,tsx,md}\""
   },

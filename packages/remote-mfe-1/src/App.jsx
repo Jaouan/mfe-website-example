@@ -1,10 +1,18 @@
-import { useState } from 'react'
-import reactLogo from './assets/react.svg'
-import viteLogo from '/vite.svg'
-import './App.css'
+import { useState } from "react";
+import { useStore } from "zustand";
+import { globalStore } from "../../global-store/global-store";
+import reactLogo from "./assets/react.svg";
+import viteLogo from "./assets/vite.svg";
+import "./App.css";
+
+const useGlobalStore = (selector) => useStore(globalStore, selector);
 
 function App() {
-  const [count, setCount] = useState(0)
+  const bears = useGlobalStore((state) => state.bears);
+  const increasePopulation = useGlobalStore(
+    (state) => state.increasePopulation
+  );
+  const [count, setCount] = useState(0);
 
   return (
     <>
@@ -21,6 +29,9 @@ function App() {
         <button onClick={() => setCount((count) => count + 1)}>
           count is {count}
         </button>
+        <button onClick={() => increasePopulation()}>
+          global store count is {bears}
+        </button>
         <p>
           Edit <code>src/App.jsx</code> and save to test HMR
         </p>
@@ -29,7 +40,7 @@ function App() {
         Click on the Vite and React logos to learn more
       </p>
     </>
-  )
+  );
 }
 
-export default App
+export default App;
