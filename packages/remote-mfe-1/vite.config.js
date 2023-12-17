@@ -14,6 +14,11 @@ export default defineConfig({
       exposes: {
         './App': './src/module.jsx',
       },
-      shared: ["global-store", "zustand"]
+      shared: {
+        "global-store": {},
+        "zustand": {},
+        "react": { requiredVersion: packageJson.dependencies["react"] },
+        "react-dom": { requiredVersion: packageJson.dependencies["react-dom"] },
+      }
     })],
 })
