@@ -34,13 +34,13 @@ function App() {
       <h1>Vite + React</h1>
       <div className="card">
         <button onClick={() => setCount((count) => count + 1)}>
-          count is {count}
+          react {count}
         </button>
         <button onClick={() => increasePopulation()}>
-          memory global store count is {bears}
+          global {bears}
         </button>
         <button onClick={() => persistedIncreasePopulation()}>
-          persisted global store count is {bearsPersisted}
+          persisted global {bearsPersisted}
         </button>
         <p>
           Edit <code>src/App.jsx</code> and save to test HMR
