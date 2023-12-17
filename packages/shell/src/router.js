@@ -17,9 +17,8 @@ const animateClearRouterElement = async (routerElement) => {
     routerElement.className = "";
 };
 
-const clearRouterElement = async (routerElement) => {
+const clearRouterElement = async (routerElement) =>
     routerElement.innerHTML !== "" && (await animateClearRouterElement(routerElement));
-}
 
 const findRoute = (routes, toPath) => {
     const sanitizedPath = toPath.replace(/^[.]+/, "");
@@ -29,9 +28,6 @@ const findRoute = (routes, toPath) => {
     );
 };
 
-const bootstrapModule = (routerElement, newRoute) =>
-    newRoute.mount(routerElement);
-
 const saveLocationInHistory = (toPath) => window.location.href !== toPath && window.history.pushState(false, 0, toPath);
 
 const navigate = async (routerElement, routes, toPath, ignoreHistory) => {
@@ -39,7 +35,7 @@ const navigate = async (routerElement, routes, toPath, ignoreHistory) => {
     !ignoreHistory && saveLocationInHistory(toPath);
     await clearRouterElement(routerElement);
     window.dispatchEvent(new CustomEvent("shell-route-changed", { "detail": newRoute }));
-    await bootstrapModule(routerElement, newRoute);
+    await newRoute.mount(routerElement);;
 }
 
 export const handleShellRouteLink = () =>
@@ -49,6 +45,7 @@ export const initRouter = (routes) => {
     const routerElement = document.querySelector(`div[x-router]`);
     window.addEventListener("shell-handleShellRouteLink", () => overrideRelativeHref(routerElement, routes, document.body));
     handleShellRouteLink();
-    window.onpopstate = () => navigate(routerElement, routes, `${window.location.pathname}${window.location.search}`);
+    window.onpopstate = () =>
+        navigate(routerElement, routes, `${window.location.pathname}${window.location.search}`, true);
     window.onpopstate();
 }
