@@ -7,7 +7,7 @@ class MountModule extends HTMLElement {
 
     async connectedCallback() {
         // TODO: Store ?
-        const manifest = await (await fetch("/manifest.json")).json();
+        const manifest = window.manifest;
         const moduleId = this.getAttribute('x-id');
         (await importRemote(moduleId, manifest.modules[moduleId])).mount(this);
     }

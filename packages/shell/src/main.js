@@ -19,6 +19,7 @@ const detectRouteRenderType = (route) =>
 
 (async () => {
     const manifest = await (await fetch("/manifest.json")).json();
+    window.manifest = manifest; // TODO Store ?
 
     (await importRemote("layout", manifest.modules.layout)).mount(document.getElementById("layout"));
 
