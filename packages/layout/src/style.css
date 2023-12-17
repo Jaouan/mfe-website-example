@@ -1,5 +1,7 @@
 .composition--side-by-side {
   display: flex;
+  flex-wrap: wrap;
+  justify-content: space-around;
 }
 .composition > *:nth-child(4n+1) {
   background: red;
