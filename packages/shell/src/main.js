@@ -4,7 +4,7 @@ import './mount-module.component';
 
 const routeRenderingStrategies = {
     unknown: ({ container }) => container.innerHTML = `Unknown route type.`,
-    module: async ({ route: { module }, container, remoteEntry }) => (await importRemote(module, remoteEntry)).mount(container),
+    module: async ({ route: { module }, container, manifest }) => (await importRemote(module, manifest.modules[module])).mount(container),
     html: ({ route, container }) => container.innerHTML = route.html,
     composition: async ({ route: { composition }, container }) =>
         container.innerHTML = (
@@ -26,12 +26,6 @@ const detectRouteRenderType = (route) =>
     initRouter(manifest.routes.map(route => ({
         ...route,
         mount: (container) =>
-            routeRenderingStrategies[detectRouteRenderType(route)](
-                {
-                    route,
-                    container,
-                    remoteEntry: manifest.modules[route.module]
-                }
-            )
+            routeRenderingStrategies[detectRouteRenderType(route)]({ route, container, manifest })
     })));
 })();
