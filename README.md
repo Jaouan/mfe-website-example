@@ -8,11 +8,7 @@ This project showcases a microfrontend website built using Vite Federation. It o
 
 - 🐚 **shell** (**host**): 
    - The central unit of the microfrontend system.
-   - Responsible for loading and managing different microfrontends (MFEs).
-
-- 🔄 **global-store**: 
-   - Implements Zustand for state management.
-   - Enables state sharing across different MFEs.
+   - Responsible for loading layout microfrontend.
 
 - 🖼️ **layout**: 
    - Manages the overall layout of the site.
@@ -22,6 +18,9 @@ This project showcases a microfrontend website built using Vite Federation. It o
    - A React module acting as a sample microfrontend content.
    - Dynamically loaded by the shell.
 
+- 🔄 **global-store**: 
+   - Implements Zustand for state management.
+   - Enables state sharing across different MFEs.
 
 ## 📚 Libraries Used
 
