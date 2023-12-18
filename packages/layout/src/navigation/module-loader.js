@@ -13,9 +13,8 @@ const addRemote = (scope, url, opts = {}) =>
         ...opts
     });
 
-const getRemote = async (scope, module = "./App") => {
-    return await __federation_method_getRemote(scope, module); 
-}
+const getRemote = (scope, module = "./App") =>
+    __federation_method_getRemote(scope, module);
 
 export const importRemote = (scope, url, module = "./App") => {
     addRemote(scope, url);
