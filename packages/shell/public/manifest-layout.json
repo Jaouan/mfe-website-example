@@ -23,7 +23,6 @@
     }
   ],
   "modules": {
-    "layout": "/layout-0.0.0/assets/remoteEntry.js",
     "mfe-1": "/remote-mfe-1-0.0.0/assets/remoteEntry.js"
   }
 }

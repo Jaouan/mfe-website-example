@@ -2571,6 +2571,15 @@ __metadata:
   languageName: node
   linkType: hard
 
+"mfe-website-example@workspace:.":
+  version: 0.0.0-use.local
+  resolution: "mfe-website-example@workspace:."
+  dependencies:
+    prettier: "npm:^3.1.0"
+    turbo: "npm:latest"
+  languageName: unknown
+  linkType: soft
+
 "minimatch@npm:^3.0.5, minimatch@npm:^3.1.1, minimatch@npm:^3.1.2":
   version: 3.1.2
   resolution: "minimatch@npm:3.1.2"
@@ -2984,15 +2993,6 @@ __metadata:
   checksum: 59ece7ca2fb9838031d73a48d4becb9a7cc1ed10e610517c7d8f19a1e02fa47f7c27d557d8a5702bec3cfeccddc853579832b43f449e54635803f277b1c78077
   languageName: node
   linkType: hard
-
-"pululu-portal@workspace:.":
-  version: 0.0.0-use.local
-  resolution: "pululu-portal@workspace:."
-  dependencies:
-    prettier: "npm:^3.1.0"
-    turbo: "npm:latest"
-  languageName: unknown
-  linkType: soft
 
 "punycode@npm:^2.1.0":
   version: 2.3.1
