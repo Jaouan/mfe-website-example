@@ -6,7 +6,7 @@ This project showcases a microfrontend website built using Vite Federation. It o
 
 ## 📦 Project Packages
 
-- 🐚 **shell** (**host**): 
+- 🐚 **shell**: 
    - The central unit of the microfrontend system.
    - Responsible for loading layout microfrontend.
 
