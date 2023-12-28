@@ -1,4 +1,5 @@
 export const Redirect = ({ to }) => {
-  document.location.replace(to);
+  window.dispatchEvent(new CustomEvent("layout-navigate", { detail: { to } }));
+  // document.location.replace(to);
   return <></>;
 };

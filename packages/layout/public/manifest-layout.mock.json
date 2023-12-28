@@ -1,0 +1,27 @@
+{
+  "routes": [
+    {
+      "html": "<span>Hello mock</span>"
+    },
+    {
+      "path": "/404",
+      "html": "<span>😿 404</span>"
+    },
+    {
+      "path": "/one",
+      "module": "stub"
+    },
+    {
+      "path": "/composition-default",
+      "modules": ["stub", "stub"]
+    },
+    {
+      "path": "/composition-side",
+      "composition": "side-by-side",
+      "modules": ["stub", "stub"]
+    }
+  ],
+  "modules": {
+    "stub": "/does-not-exists/assets/remoteEntry.js"
+  }
+}
