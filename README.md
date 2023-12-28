@@ -16,12 +16,12 @@ This project showcases a microfrontend website built using Vite Federation. It o
 
 - ⚛️ **remote-mfe-basic**: 
    - A React module acting as a sample microfrontend content.
-   - Dynamically loaded by the shell.
+   - Dynamically loaded by the layout.
 
 - ⚛️ **remote-mfe-subroutes**: 
    - A React module acting as a sample microfrontend content with sub-routes.
    - The router uses either the path for explicit routing, or memory to manage implicit routing
-   - Dynamically loaded by the shell.
+   - Dynamically loaded by the layout.
 
 - 🔄 **global-store**: 
    - Implements Zustand for state management.
