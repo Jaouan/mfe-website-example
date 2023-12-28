@@ -3,11 +3,11 @@ import { mountRemote } from "./module-loader";
 const routeRenderingStrategies = {
     unknown: ({ container }) => container.innerHTML = `Unknown route type.`,
     html: ({ route, container }) => container.innerHTML = route.html,
-    module: ({ route: { module }, container, manifest }) => mountRemote(manifest, module, container),
-    modules: ({ route: { composition, modules }, container }) =>
+    module: ({ route: { path, module }, container, manifest }) => mountRemote(manifest, module, container, { routePath: path }),
+    modules: ({ route: { path, composition, modules }, container }) =>
         container.innerHTML = (
             `<div class="composition composition--${composition}">
-                ${modules.map((module, moduleIndex) => `<mount-module class="fragment-${moduleIndex}" x-id="${module}"></mount-module>`).join("")}
+                ${modules.map((module, moduleIndex) => `<mount-module class="fragment-${moduleIndex}" x-id="${module}" x-index="${moduleIndex}" x-route-path="${path}"></mount-module>`).join("")}
             </div>`
         )
 };

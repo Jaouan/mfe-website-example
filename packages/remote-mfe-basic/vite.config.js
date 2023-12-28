@@ -16,7 +16,7 @@ export default defineConfig({
       promiseImportName: i => `__tla_${i}`
     }),
     federation({
-      name: 'mfe-1',
+      name: 'mfe-basic',
       filename: 'remoteEntry.js',
       exposes: {
         './App': './src/module.jsx',

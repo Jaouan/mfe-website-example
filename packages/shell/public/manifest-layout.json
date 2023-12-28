@@ -4,25 +4,39 @@
       "html": "<span>Hello</span>"
     },
     {
-      "path": "/mfe-1",
-      "module": "mfe-1"
+      "path": "/404",
+      "html": "<span>😿 404</span>"
+    },
+    {
+      "path": "/mfe-basic",
+      "module": "mfe-basic"
+    },
+    {
+      "path": "/mfe-subroutes",
+      "module": "mfe-subroutes"
     },
     {
       "path": "/composition-default",
-      "modules": ["mfe-1", "mfe-1"]
+      "modules": ["mfe-basic", "mfe-basic"]
     },
     {
       "path": "/composition-side",
       "composition": "side-by-side",
-      "modules": ["mfe-1", "mfe-1"]
+      "modules": ["mfe-basic", "mfe-basic"]
     },
     {
       "path": "/composition-4",
       "composition": "side-by-side",
-      "modules": ["mfe-1", "mfe-1", "mfe-1", "mfe-1"]
+      "modules": ["mfe-basic", "mfe-basic", "mfe-basic", "mfe-basic"]
+    },
+    {
+      "path": "/composition-subroutes",
+      "composition": "side-by-side",
+      "modules": ["mfe-subroutes", "mfe-subroutes"]
     }
   ],
   "modules": {
-    "mfe-1": "/remote-mfe-1-0.0.0/assets/remoteEntry.js"
+    "mfe-basic": "/remote-mfe-basic-0.0.0/assets/remoteEntry.js",
+    "mfe-subroutes": "/remote-mfe-subroutes-0.0.0/assets/remoteEntry.js"
   }
 }

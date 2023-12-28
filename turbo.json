@@ -8,15 +8,30 @@
     "global-store#build": { "outputs": ["dist/**"] },
     "global-store#dev": {},
 
-    "remote-mfe-1#build": { "outputs": ["dist/**"] },
-    "remote-mfe-1#dev": { "dependsOn": ["global-store#build"] },
+    "remote-mfe-basic#build": { "outputs": ["dist/**"] },
+    "remote-mfe-basic#dev": { "dependsOn": ["global-store#build"] },
+
+    "remote-mfe-subroutes#build": { "outputs": ["dist/**"] },
+    "remote-mfe-subroutes#dev": { "dependsOn": ["global-store#build"] },
 
     "layout#build": { "outputs": ["dist/**"] },
     "layout#dev": {},
 
-    "shell#build:prod": { "dependsOn": ["remote-mfe-1#build", "layout#build", "global-store#build"] },
+    "shell#build:prod": {
+      "dependsOn": [
+        "remote-mfe-basic#build",
+        "remote-mfe-subroutes#build",
+        "layout#build",
+        "global-store#build"
+      ]
+    },
     "shell#dev": {
-      "dependsOn": ["remote-mfe-1#build", "layout#build", "global-store#build"],
+      "dependsOn": [
+        "remote-mfe-basic#build",
+        "remote-mfe-subroutes#build",
+        "layout#build",
+        "global-store#build"
+      ],
       "cache": false,
       "persistent": true
     }
