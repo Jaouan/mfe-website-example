@@ -16,10 +16,6 @@
       "module": "mfe-subroutes"
     },
     {
-      "path": "/composition-default",
-      "modules": ["mfe-basic", "mfe-basic"]
-    },
-    {
       "path": "/composition-side",
       "composition": "side-by-side",
       "modules": ["mfe-basic", "mfe-basic"]
