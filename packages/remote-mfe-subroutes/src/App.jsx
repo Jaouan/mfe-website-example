@@ -1,10 +1,11 @@
 import {
+  Navigate,
   RouterProvider,
   createBrowserRouter,
   createMemoryRouter,
 } from "react-router-dom";
 import { useEffect, useState } from "react";
-import { MainLayout } from "./pages/MainLayout";
+import { MainLayout } from "./pages/MainLayout/MainLayout";
 import { Foo } from "./pages/Foo";
 import { Bar } from "./pages/Bar";
 import { Redirect } from "./components/Redirect";
@@ -18,7 +19,7 @@ const routingStrategies = {
   implicit: {
     router: createMemoryRouter,
     basePath: () => "/",
-    notFoundElement: <>(404)</>,
+    notFoundElement: <Navigate to="/" />,
   },
 };
 
@@ -44,11 +45,16 @@ const App = ({ preferImplicitRouting, routePath }) => {
               path: "bar",
               element: <Bar />,
             },
+            {
+              path: "*",
+              element: routingStrategy.notFoundElement,
+            },
           ],
         },
+        /* Leave global router handle others paths. */
         {
           path: "*",
-          element: routingStrategy.notFoundElement,
+          element: <></>,
         },
       ])
     );
@@ -56,7 +62,20 @@ const App = ({ preferImplicitRouting, routePath }) => {
 
   return (
     <>
-      <h1>routing: {preferImplicitRouting ? "implicit" : `explicit (${routePath})`}</h1>
+      {preferImplicitRouting ? (
+        <>
+          <h2>Implicit routing</h2>
+          <div>Navigation uses in-memory path.</div>
+          <div>Error routes to default route.</div>
+        </>
+      ) : (
+        <>
+          <h2>Explicit routing</h2>
+          <div>Navigation uses browser path.</div>
+          <div>Error routes to /404.</div>
+          <div>Base path: {routePath}</div>
+        </>
+      )}
       {router ? <RouterProvider router={router} /> : <></>}
     </>
   );
