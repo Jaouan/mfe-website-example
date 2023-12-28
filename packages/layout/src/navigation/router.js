@@ -8,7 +8,7 @@ const router = ({ container, routes, ...overrideOpts }) => {
     };
     const context = {
         currentPath: '',
-        unmountRoute: () => { }
+        unrenderRoute: () => { }
     };
 
     const overrideLink = (domElement) => {
@@ -16,7 +16,7 @@ const router = ({ container, routes, ...overrideOpts }) => {
             a.removeAttribute(opts.overrideLinkWithAttribute);
             const overrideLinkEvent = (event) => {
                 event.preventDefault();
-                navigateToPath(a.getAttribute("href"));
+                navigate({ to: a.getAttribute("href") });
             };
             a.addEventListener("click", (event) => overrideLinkEvent(event));
             a.addEventListener("keydown", (event) => (event.keyCode || event.which) === /* ENTER */ 13 && overrideLinkEvent(event));
@@ -26,7 +26,7 @@ const router = ({ container, routes, ...overrideOpts }) => {
     const animateClearContainer = async () => {
         container.className = opts.routeOutClass;
         await new Promise((resolve) => setTimeout(resolve, opts.routeOutDelay));
-        context.unmountRoute?.();
+        context.unrenderRoute?.();
         container.innerHTML = "";
         container.className = "";
     };
@@ -44,24 +44,25 @@ const router = ({ container, routes, ...overrideOpts }) => {
 
     const saveLocationInHistory = (toPath) => window.location.href !== toPath && window.history.pushState(false, 0, toPath);
 
-    const navigateToPath = async (toPath, ignoreHistory) => {
-        const newRoute = findRoute(toPath);
-        newRoute.path !== context.currentPath && await navigateToRoute(toPath, newRoute, ignoreHistory);
-    };
-
-    const navigateToRoute = async (toPath, newRoute, ignoreHistory) => {
+    const renderRoute = async (toPath, newRoute, ignoreHistory) => {
         !ignoreHistory && saveLocationInHistory(toPath);
         await clearContainer(container);
         context.currentPath = newRoute.path;
-        context.unmountRoute = await newRoute.render(container);;
+        context.unrenderRoute = await newRoute.render(container);;
     }
+
+    const navigate = async ({ to, ignoreHistory, replace }) => {
+        replace && window.history.replaceState("", "", to);
+        const newRoute = findRoute(to);
+        newRoute.path !== context.currentPath && await renderRoute(to, newRoute, replace || ignoreHistory);
+    };
 
     overrideLink(document.body);
     window.onpopstate = () =>
-        navigateToPath(`${window.location.pathname}${window.location.search}`, true);
+        navigate({ to: `${window.location.pathname}${window.location.search}`, ignoreHistory: true });
     window.onpopstate();
 
-    return { navigate: navigateToPath };
+    return { navigate };
 };
 
 export default router;

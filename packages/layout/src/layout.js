@@ -22,5 +22,5 @@ export const Layout = async (container) => {
         routeOutDelay: 150,
         overrideLinkWithAttribute: "x-layout-route"
     });
-    window.addEventListener("layout-navigate", (event) => navigate(event.detail.to));
+    window.addEventListener("layout-navigate", (event) => navigate(event.detail));
 };
