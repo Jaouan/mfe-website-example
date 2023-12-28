@@ -1,3 +1,3 @@
 import { Layout } from "./layout";
 
-document.getElementById("layout").innerHTML = Layout();
+Layout(document.getElementById("layout"));
