@@ -81,7 +81,8 @@ The `manifest.json` file is crucial for the dynamic configuration and loading of
 
 - 🛠️ **Development Mode**: 
   - `yarn dev`: Runs the shell in development mode.
-  - `yarn dev:mfe`: Runs the remote MFE 1 in development mode.
+  - `yarn dev:mfe-basic`: Runs the remote MFE basic in development mode.
+  - `yarn dev:mfe-subroutes`: Runs the remote MFE subroutes in development mode.
   - `yarn dev:layout`: Runs the layout package in development mode.
   - `yarn dev:store`: Runs the global-store package in development mode.
 
