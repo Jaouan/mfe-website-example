@@ -4,16 +4,16 @@
   justify-content: space-around;
 }
 .composition > *:nth-child(4n+1) {
-  background: red;
+  background: hsl(105, 100%, 85%);
 }
 .composition > *:nth-child(4n+2) {
-  background: green;
+  background: hsl(227, 100%, 85%);
 }
 .composition > *:nth-child(4n+3) {
-  background: cyan;
+  background: hsl(316, 100%, 85%);
 }
 .composition > *:nth-child(4n+4) {
-  background: orange;
+  background: hsl(48, 100%, 85%);
 }
 
 .route-out {
