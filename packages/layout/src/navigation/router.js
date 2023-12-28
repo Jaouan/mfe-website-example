@@ -7,7 +7,8 @@ const router = ({ container, routes, ...overrideOpts }) => {
         ...overrideOpts
     };
     const context = {
-        currentPath: ''
+        currentPath: '',
+        unmountRoute: () => { }
     };
 
     const overrideLink = (domElement) => {
@@ -25,6 +26,7 @@ const router = ({ container, routes, ...overrideOpts }) => {
     const animateClearContainer = async () => {
         container.className = opts.routeOutClass;
         await new Promise((resolve) => setTimeout(resolve, opts.routeOutDelay));
+        context.unmountRoute?.();
         container.innerHTML = "";
         container.className = "";
     };
