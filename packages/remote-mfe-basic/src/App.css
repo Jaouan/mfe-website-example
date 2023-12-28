@@ -18,6 +18,12 @@
   filter: drop-shadow(0 0 2em #61dafbaa);
 }
 
+.react-module,
+.react-module .card,
+.react-module h1 {
+  text-align: center;
+}
+
 @keyframes logo-spin {
   from {
     transform: rotate(0deg);
